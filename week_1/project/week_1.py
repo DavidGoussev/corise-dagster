@@ -40,7 +40,7 @@ def csv_helper(file_name: str) -> Iterator[Stock]:
         for row in reader:
             yield Stock.from_list(row)
 
-
+# weekly project #1
 @op
 def get_s3_data():
     pass
