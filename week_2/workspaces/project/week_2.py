@@ -67,8 +67,8 @@ docker = {
 
 week_2_pipeline_local = week_2_pipeline.to_job(
     name="week_2_pipeline_local",
-    config= local,
-    resource_defs = {
+    config=local,
+    resource_defs={
         "s3": mock_s3_resource,
         "redis": ResourceDefinition.mock_resource()
     }
@@ -76,8 +76,8 @@ week_2_pipeline_local = week_2_pipeline.to_job(
 
 week_2_pipeline_docker = week_2_pipeline.to_job(
     name="week_2_pipeline_docker",
-    config= docker,
-    resource_defs = {
+    config=docker,
+    resource_defs={
         "s3": s3_resource,
         "redis": redis_resource
     }
