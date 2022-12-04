@@ -5,12 +5,12 @@ from workspaces.resources import mock_s3_resource, redis_resource, s3_resource
 from workspaces.types import Aggregation, Stock
 
 @op(
-    config_schema={'s3_key': String},
+    config_schema={"s3_key": String},
     required_resource_keys={"s3"}
     )
 def get_s3_data(context) -> List[Stock]:
     s3_key = context.op_config["s3_key"]
-    return list(csv_helper(context.op_config["s3_key"]))
+    return [Stock.from_list(item) for item in context.resources.s3.get_data(s3_key)]
 
 @op(    
     ins = {"stocks": In(dagster_type=List[Stock], description="s3 list stock data")},
