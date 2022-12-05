@@ -30,7 +30,7 @@ def put_redis_data(context, high_aggregation: Aggregation) -> Nothing:
     required_resource_keys={"s3"}
 )
 def put_s3_data(context, high_aggregation: Aggregation) -> Nothing:
-    context.resources.s3.put_data(key=high_aggregation.date, data=high_aggregation)
+    context.resources.s3.put_data(key_name=high_aggregation.date, data=high_aggregation)
 
 
 @graph
