@@ -112,7 +112,7 @@ def s3_resource() -> S3:
         bucket=context.resource_config["bucket"],
         access_key=context.resource_config["access_key"],
         secret_key=context.resource_config["secret_key"],
-        endpoint_url=context.resource_config["endpoin_url"]
+        endpoint_url=context.resource_config["endpoint_url"]
     )
 
 @resource (
