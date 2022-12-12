@@ -94,7 +94,7 @@ docker = {
 )
 def docker_config(partition_key: String):
     docker_config = docker.copy()
-    docker_config['ops'] = {"get_s3_data": {"config": {"s3_key": f"prefix/stock_{partition_key}.csv"}}}
+    docker_config['ops'] = {"get_s3_data": {"config": {"s3_key": "prefix/stock_%s.csv" % partition_key}}}
     return docker_config
 
 
@@ -147,7 +147,7 @@ def week_3_sensor_docker(context):
     else:
         for s3_key in s3_keys:
             docker_config = docker.copy()
-            docker_config['ops'] = {"get_s3_data": {"config": {"s3_key": f"{s3_key}"}}}
+            docker_config['ops'] = {"get_s3_data": {"config": {"s3_key": "%s" % s3_key}}}
             yield RunRequest(
                 run_key=s3_key, 
                 run_config=docker_config
